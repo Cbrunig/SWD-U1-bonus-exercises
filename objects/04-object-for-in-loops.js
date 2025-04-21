@@ -3,7 +3,8 @@
 /*************************************/
 
 /*
-	Because objects store values by key names and not by index (like arrays do), a regular for loop doesn't work. If you want to iterate through the properties of an object, you must use a for...in loop. 
+	Because objects store values by key names and not by index (like arrays do), a regular for loop doesn't work. 
+	If you want to iterate through the properties of an object, you must use a for...in loop. 
 
 	Also, it's sometimes necessary to combine both for loops and for...in loops if you are working with objects and arrays together. Let's investigate!
 */
@@ -12,7 +13,10 @@
 /**** THE FOR...IN LOOP ****/
 
 /*
-	Let's talk about the syntax of a for...in loop. It's actually not that different overall from a for loop, except you're not declaring an iterator (i) and telling it stop/start/increment values. Instead, you declare a generic variable to stand in for each key name. This is great, because you may not even know what the key names are, but you can loop through anyway.
+	Let's talk about the syntax of a for...in loop. It's actually not that different overall from a for loop, 
+	except you're not declaring an iterator (i) and telling it stop/start/increment values. 
+	Instead, you declare a generic variable to stand in for each key name. This is great, 
+	because you may not even know what the key names are, but you can loop through anyway.
 
 	for (let key in objectName) {
 		// do stuff with keys and values
@@ -63,14 +67,17 @@ console.log(appleKey);
 
 console.log(""); // skip a line in console
  
-// TODO: Use what you've learned about how to access keys and values to loop through the object and print only values which belong to food items that are sides. No need to write this one as a function, just do the loop. Hint 1: you need to check the key names, not the values! Hint 2: Even though they don't look like it in the object, keys are stored as strings.
+// TODO: Use what you've learned about how to access keys and values to loop through the object and print only values which belong to food items that are sides.
+//  No need to write this one as a function, just do the loop. Hint 1: you need to check the key names, 
+// not the values! Hint 2: Even though they don't look like it in the object, keys are stored as strings.
 
 
 
 /**** LOOPING THROUGH OBJECTS WITH ARRAYS AS VALUES ****/
 
 /*
-	While objects can certainly just hold things like strings and numbers as values, sometimes they hold other things. Let's look at how to loop through the object AND loop through an array that is inside an object.
+	While objects can certainly just hold things like strings and numbers as values, sometimes they hold other things.
+	 Let's look at how to loop through the object AND loop through an array that is inside an object.
 */
 
 // EXAMPLE: Here's an object that has arrays as values.
@@ -90,20 +97,40 @@ for (let packageType in pantry) {
 		console.log(foodItem);
 	}
 }
-// Run the program to see the results in the console. Nicely formatted, right? Notice how each array had a different number of items, but we handled that by taking the length of each array, as pantry[packageType] is the correct way to refer to the value of each property.
+// Run the program to see the results in the console. Nicely formatted, right?
+// Notice how each array had a different number of items, but we handled that by taking the length of each array,
+//as pantry[packageType] is the correct way to refer to the value of each property.
 
 console.log(""); // skip a line in console
 
-// TODO: Write a function that takes in an index number, prints "Items at index (x):" and then prints the element at that index of each array as you loop through the object. Use the escape character \t to indent each item for that index. If the array doesn't have anything at that index, it should be skipped without throwing an error. (Note: you don't need nested loops for this one.)
-
-
+// TODO: Write a function that takes in an index number, prints "Items at index (x):" and then prints the element at that index of each array as you loop through the object.
+// Use the escape character \t to indent each item for that index.
+// If the array doesn't have anything at that index, it should be skipped without throwing an error. (Note: you don't need nested loops for this one.)
+function itemsAt(index) {
+	for (let element in pantry) {
+		if (Array.isArray(pantry[element])) {
+			console.log(`Items at index ${index}: ${pantry[element][index]}`);
+		}
+	}
+}
+		
+itemsAt(2);
 // TODO: Call the function above at 2 or 3 different index numbers and check to see the results are what you expect.
 
 
-// TODO: Now write a function that takes a package type as a parameter and then prints all the items of the array only for that package type. This time, print "Items that are (type):" and then put a "- " in front of each item from that array. (Hint: if you already know the name of the package type, you don't need a for...in loop to check every property!)
+// TODO: Now write a function that takes a package type as a parameter and then prints all the items of the array only for that package type. 
+// This time, print "Items that are (type):" and then put a "- " in front of each item from that array. 
+// (Hint: if you already know the name of the package type, you don't need a for...in loop to check every property!)
+function itemsByPackage(type) {
+	console.log(`Items that are ${type}:`);
+	for (let i = 0; i < pantry[type].length; i++) {
+		console.log("- " + pantry[type][i]);
+	}
+}
 
-
-// TODO: Call the function for a couple of the key names in the object and check the results. Remember that JavaScript stores object keys as strings, so you'll need to pass them in that way.
+itemsByPackage("canned");
+// TODO: Call the function for a couple of the key names in the object and check the results. Remember that JavaScript stores object keys as strings, 
+// so you'll need to pass them in that way.
 
 
 /*

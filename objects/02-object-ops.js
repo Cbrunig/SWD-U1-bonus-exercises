@@ -87,12 +87,33 @@ for (let restaurant of restaurants) {
 */
 
 // TODO: create objects and put them in an array
+let stlZoo = {
+	name: "St. Louis Zoo",
+	location: "St. Louis, MO",
+	adultTicketPrice: "free",
+	childTicketPrice: "free",
+	famousFeatures: ["Polar Bear", "Sea Lion Show", "Primate House"],
+};
 
+let stlArtMuseum = {
+	name: "St. Louis Art Museum",
+	location: "St. Louis, MO",
+	adultTicketPrice: "free",
+	childTicketPrice: "free",
+	famousFeatures: ["Historical Armor", "Islamic Art", "Modern and Contemporary Art"],
+};
+
+let attractions = [stlZoo, stlArtMuseum];
 /*
 	Loop through the array, then within that for loop, use a for...in loop to grab values from each key and print them to the console. If you come across a key storing an array, print each element in the array instead of the array itself. Remember that you need a new index variable with each nested FOR loop (i, j are common).
 
 	NOTE: This is a tough one to think through when you're new at this. If you get completely stuck, reference the solution that accompanies this starter code. But make an effort to figure it out yourself first!
 */
+for (let attraction of attractions) {
+	for (let key in attraction) {
+		console.log(attraction[key]);
+	}
+}
 
 // TODO: use nested loops to print values inside objects
 
@@ -107,3 +128,6 @@ for (let restaurant of restaurants) {
 
 // TODO: Print a template literal
 
+for (let attraction of attractions) {
+	console.log(`A favorite with the locals, the ${attraction.name} features several exhibits, including ${attraction.famousFeatures.join(", ")}. Entry for adults is ${attraction.adultTicketPrice} and admission for children is ${attraction.childTicketPrice}`);
+}
